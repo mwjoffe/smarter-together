@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Globe from 'react-globe.gl'
 import * as THREE from 'three'
@@ -192,10 +192,7 @@ const SystemSpectrumWebGL = () => {
     }
 
     // Animation Loop
-    let lastTime = 0
     const animate = (time: number) => {
-      const deltaTime = time - lastTime
-      lastTime = time
       const elapsed = time * 0.001
 
       // Animate Background Particles
@@ -275,9 +272,9 @@ const SystemSpectrumWebGL = () => {
 }
 
 interface SlideItem {
-  label?: string | JSX.Element;
+  label?: string | React.ReactNode;
   title?: string;
-  desc: string | JSX.Element;
+  desc: string | React.ReactNode;
 }
 
 interface Facilitator {
@@ -306,23 +303,25 @@ interface Slide {
   items?: SlideItem[];
   facilitators?: Facilitator[];
   case?: string;
-  situation?: string | JSX.Element;
-  task?: string | JSX.Element;
+  situation?: string | React.ReactNode;
+  task?: string | React.ReactNode;
   questions?: string[];
   rows?: TableRow[];
   sprint?: string;
   question?: string;
 }
 
+const basePath = '/smarter-together'
+
 const slides: Slide[] = [
   { id: 1, type: 'title', title: 'SMARTER TOGETHER', subtitle: 'SXSW 2026', tag: 'HOW WE THINK, FEEL, AND DECIDE WITH AI' },
   { id: 2, type: 'facilitators', title: 'Meet the Facilitators', facilitators: [
-    { name: 'Michael Joffe', role: 'NYU, Psychology & AI | Marketing, Google', image: '/avatars/Joffe headshot.jpeg' },
-    { name: 'Manuel Garcia-Garcia Phd', role: 'Global Science Lead, Ipsos', image: '/avatars/Manuel headshot.jpeg' }
+    { name: 'Michael Joffe', role: 'NYU, Psychology & AI | Marketing, Google', image: `${basePath}/avatars/Joffe headshot.jpeg` },
+    { name: 'Manuel Garcia-Garcia Phd', role: 'Global Science Lead, Ipsos', image: `${basePath}/avatars/Manuel headshot.jpeg` }
   ]},
   { id: 3, type: 'intro', title: 'The Problem', text: 'Avoiding the Next Chicken Nugget Apocalypse', tag: 'SMARTER TOGETHER 2026', icon: '🍗' },
-  { id: 4, type: 'image-only', image: '/Mcdonalds 1.png' },
-  { id: 5, type: 'image-only', image: '/Mcdonalds 2.png' },
+  { id: 4, type: 'image-only', image: `${basePath}/Mcdonalds 1.png` },
+  { id: 5, type: 'image-only', image: `${basePath}/Mcdonalds 2.png` },
   { id: 6, type: 'analysis', title: 'WHAT ACTUALLY HAPPENED?', subtitle: 'A Disconnect Between Design and Psychology', items: [
     { label: 'The Failure', desc: 'A design failure extending beyond the code into user experience.' },
     { label: 'The Violation', desc: 'The system violated the fundamental need for Control and Correction.' },
@@ -337,8 +336,8 @@ const slides: Slide[] = [
   ]},
   { id: 8, type: 'sprint-header', sprint: '01', title: 'Decision Making', subtitle: 'From Automation to Augmentation: Designing for Better Decisions' },
   { id: 9, type: 'question', question: '“What decisions would you fully delegate AI? Which decisions would you never delegate to AI? Why?”' },
-  { id: 10, type: 'image-only', images: ['/phiineas 1.jpg', '/Phineas 2.jpg'] },
-  { id: 11, type: 'image-only', image: '/Muhammad-Yunus.jpg' },
+  { id: 10, type: 'image-only', images: [`${basePath}/phiineas 1.jpg`, `${basePath}/Phineas 2.jpg`] },
+  { id: 11, type: 'image-only', image: `${basePath}/Muhammad-Yunus.jpg` },
   { id: 12, type: 'system-spectrum', title: 'The Spectrum of Thought', subtitle: 'Between Intuition and Deliberation' },
   { id: 13, type: 'framework', title: 'When to Hand the Keys Back', subtitle: 'Adapted from Amershi et al., 2019', items: [
     { label: 'Initially', desc: 'Make it clear what the system can do and how it can do it.' },
@@ -348,8 +347,8 @@ const slides: Slide[] = [
   { id: 14, type: 'workshop', title: 'Decision Making Sprint', case: 'Patient Triage Product', situation: 'A design team working on a product that supports healthcare workers with patient discharge. Pilot trial: 94% success, reduced patient stays by 18%. Hospital administrators want a full launch, but senior doctors fear the tool will remove their agency and lead to patient harm.', task: 'Design one feature that augments doctor decision making rather than overriding it. Describe the feature and your rollout strategy.', questions: ['Who are the stakeholders? What do they care about?', 'What risks and cognitive biases (e.g. over-reliance) are involved?', 'In what conditions should the physician override? How would you design for this?'] },
   { id: 15, type: 'sprint-header', sprint: '02', title: 'Emotion', subtitle: 'Designing for Human Emotional Context' },
   { id: 16, type: 'question', question: '“Can AI Be Emotionally Intelligent?”' },
-  { id: 17, type: 'image-only', image: '/Ibn Sina.jpg' },
-  { id: 18, type: 'story', title: '1,000 Years Ago', text: '1,000 years ago, Ibn Sina diagnosed "lovesickness" by monitoring a pulse while reciting village names.', tag: 'EMOTION AI ORIGINS', image: '/avatars/Ibn Sina.jpg' },
+  { id: 17, type: 'image-only', image: `${basePath}/Ibn Sina.jpg` },
+  { id: 18, type: 'story', title: '1,000 Years Ago', text: '1,000 years ago, Ibn Sina diagnosed "lovesickness" by monitoring a pulse while reciting village names.', tag: 'EMOTION AI ORIGINS', image: `${basePath}/avatars/Ibn Sina.jpg` },
   { id: 19, type: 'analysis', title: 'Beyond "Happy" and "Sad"', subtitle: 'The 3D Spectrum (VAC Model)', items: [
     { label: 'Valence', desc: 'Positive vs. Negative experience.' },
     { label: 'Arousal', desc: 'Intensity: High Energy vs. Low Energy.' },
@@ -367,7 +366,7 @@ const slides: Slide[] = [
   ]},
   { id: 22, type: 'workshop', title: 'Emotional Design Sprint', case: 'Personal Wellness Coach', situation: 'You are on the product team for a new AI-powered mobile app designed to be a “mindfulness coach” for young adults dealing with everyday stress and anxiety. The app provides guided meditations, journaling prompts, and cognitive behavioral therapy (CBT) exercises.', task: 'Create the Persona: Brainstorm a core personality for the app’s AI assistant. Give it a name, choose an archetype (e.g. “The Guide”, “The Companion”), and list three defining adjectives. Then, design an emotional interaction for a user who is struggling with motivation.', questions: ['Emotional Diagnosis: How to interpret the users’ emotional responses?', 'Empathy Layer: How to make the user feel recognized in a human-like manner?', 'Guardrail Layer: What are the risks of emotional intelligence and how to build guardrails?'] },
   { id: 23, type: 'sprint-header', sprint: '03', title: 'Trust', subtitle: 'Building Reliable & Meaningful Connections' },
-  { id: 24, type: 'image-only', image: '/Air canada.jpg' },
+  { id: 24, type: 'image-only', image: `${basePath}/Air canada.jpg` },
   { id: 25, type: 'story', title: 'The Air Canada Lesson', text: 'In Moffatt v. Air Canada, the court rejected the idea of an "independent" bot.', tag: 'TRUST & AUTOMATION' },
   { id: 26, type: 'grid', title: 'Trust is Efficient Prediction', subtitle: 'Types of Trust', items: [
     { title: 'Contractual Trust', desc: 'Reliability and rules. A logical calculation of performance and consistent behavior over time.' },
@@ -715,7 +714,7 @@ export default function App() {
 
         {slide.type === 'webgl-image' && (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-            <ThinkingWebGL imageUrl={slide.image} />
+            <ThinkingWebGL imageUrl={slide.image || ''} />
           </div>
         )}
 
@@ -802,7 +801,7 @@ export default function App() {
                   </svg>
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                   {slide.items?.map((item) => (
+                   {slide.items?.map((item: any) => (
                     <div key={item.label} style={{ ...styles.card, borderLeft: `4px solid ${brandPrimary}`, padding: '25px 35px' } as any}>
                       <div style={{ fontWeight: '700', fontSize: '20px', marginBottom: '8px', color: brandSecondary }}>{item.label}</div>
                       <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{item.desc}</div>
@@ -812,7 +811,7 @@ export default function App() {
               </div>
             ) : (
               <div style={{ ...styles.grid, gridTemplateColumns: slide.id === 27 ? 'repeat(3, 1fr)' : 'repeat(auto-fit, minmax(450px, 1fr))' } as any}>
-                {slide.items?.map((item) => (
+                {slide.items?.map((item: any) => (
                   <div key={item.label} style={{ ...styles.card, display: 'flex', gap: '30px', minWidth: 0 } as any}>
                     <div style={{ fontWeight: '900', color: brandPrimary, fontSize: '18px' }}>+</div>
                     <div>
@@ -833,7 +832,7 @@ export default function App() {
             {slide.id === 26 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginTop: '40px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
-                  {slide.items?.slice(0, 2).map((item) => (
+                  {slide.items?.slice(0, 2).map((item: any) => (
                     <div key={item.title} style={styles.card as any}>
                       <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandPrimary }}>{item.title}</div>
                       <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{item.desc}</div>
@@ -851,19 +850,19 @@ export default function App() {
                   gap: '40px'
                 }}>
                   <div>
-                    <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandSecondary }}>{slide.items?.[2].title}</div>
-                    <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{slide.items?.[2].desc}</div>
+                    <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandSecondary }}>{(slide.items?.[2] as any)?.title}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{(slide.items?.[2] as any)?.desc}</div>
                   </div>
                   <div style={{ fontSize: '24px', opacity: 0.3 }}>⟷</div>
                   <div>
-                    <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandSecondary }}>{slide.items?.[3].title}</div>
-                    <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{slide.items?.[3].desc}</div>
+                    <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandSecondary }}>{(slide.items?.[3] as any)?.title}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{(slide.items?.[3] as any)?.desc}</div>
                   </div>
                 </div>
               </div>
             ) : (
               <div style={{ ...styles.grid, gridTemplateColumns: slide.id === 20 ? 'repeat(3, 1fr)' : '1fr 1fr' } as any}>
-                {slide.items?.map((item) => (
+                {slide.items?.map((item: any) => (
                   <div key={item.title} style={styles.card as any}>
                     <div style={{ fontWeight: '800', fontSize: '22px', marginBottom: '15px', color: brandPrimary }}>{item.title}</div>
                     <div style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{item.desc}</div>
@@ -887,7 +886,7 @@ export default function App() {
              <div style={{ ...styles.tag, textAlign: 'left' } as any}>{slide.title}</div>
              <h2 style={styles.h2 as any}>{slide.subtitle}</h2>
              <div style={{ display: 'flex', gap: '20px', marginTop: '60px' }}>
-                {slide.items?.map((item, i) => (
+                {slide.items?.map((item: any, i) => (
                   <div key={i} style={{ flex: 1, background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <div style={{ fontSize: '12px', fontWeight: 'bold', color: brandPrimary, marginBottom: '20px', opacity: 0.8 }}>0{i+1}</div>
                     <div style={{ fontSize: '20px', fontWeight: '800', marginBottom: '15px' }}>{item.label}</div>
@@ -903,7 +902,7 @@ export default function App() {
             <div style={{ ...styles.tag, textAlign: 'left' } as any}>{slide.title}</div>
             <h2 style={styles.h2 as any}>{slide.subtitle}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '60px' }}>
-              {slide.items?.map((item, i) => (
+              {slide.items?.map((item: any, i) => (
                 <div key={i} style={{ ...styles.card, background: i === 0 ? 'rgba(192, 92, 35, 0.05)' : 'rgba(253, 241, 158, 0.05)' } as any}>
                   <div style={{ fontSize: '32px', fontWeight: '900', marginBottom: '20px', color: i === 0 ? brandPrimary : brandSecondary }}>{item.label}</div>
                   <p style={{ fontSize: '20px', lineHeight: '1.6', color: 'rgba(255,255,255,0.7)' }}>{item.desc}</p>
@@ -946,14 +945,15 @@ export default function App() {
                     globeImageUrl="//unpkg.com/three-globe/example/img/earth-water.png"
                     polygonsData={countriesData.features}
                     polygonAltitude={d => {
-                      const c = getCountryColor(d.properties.NAME);
+                      const c = getCountryColor((d as any).properties.NAME);
                       return c === 'rgba(255,255,255,0.02)' ? 0.01 : 0.04;
                     }}
-                    polygonCapColor={d => getCountryColor(d.properties.NAME)}
+                    polygonCapColor={d => getCountryColor((d as any).properties.NAME)}
                     polygonSideColor={() => 'rgba(0, 0, 0, 0.4)'}
                     polygonStrokeColor={() => '#111'}
-                    polygonLabel={({ properties: d }) => {
-                      const row = (slide as any).rows?.find(r => 
+                    polygonLabel={(data: any) => {
+                      const d = data.properties;
+                      const row = (slide as any).rows?.find((r: TableRow) => 
                         r.country.toLowerCase() === d.NAME.toLowerCase() || 
                         (r.country === 'USA' && d.NAME === 'United States of America') ||
                         (r.country === 'Great Britain' && d.NAME === 'United Kingdom') ||
