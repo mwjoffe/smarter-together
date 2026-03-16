@@ -17,6 +17,8 @@
 2. **Global Excitement Globe (Slide 28):** 3D spinning globe mapping Ipsos AI Monitor data to country geometries with hover tooltips.
 3. **Speaker Intro:** Integrated local headshots from `/public/avatars/`.
 4. **Auto-Scaling:** Implemented logic to ensure the 1440x900 canvas fits perfectly in any browser window.
+5. **CASA Refinement (Slide 27):** Updated "Social Actor" terminology and corrected CASA definition.
+6. **Algorithm Aversion Layout (Slide 29):** Optimized grid layout to display all analysis items on a single line.
 
 ## 🚀 Navigation
 - **Next:** Right Arrow / Space

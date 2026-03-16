@@ -374,27 +374,38 @@ const slides: Slide[] = [
     { title: 'Trust (The User)', desc: 'Trust is situated with the user. It is a psychological state and willingness to be vulnerable.' },
     { title: 'Trustworthiness (The AI)', desc: 'A characteristic of the system itself. Its actual ability to perform reliably and safely.' }
   ]},
-  { id: 27, type: 'analysis', title: 'Why We Reject Superior Help', subtitle: 'Algorithm Aversion', items: [
+  { id: 27, type: 'grid', title: 'WE TREAT AI AS A SOCIAL ACTOR', subtitle: 'We Treat AI as a Social Actor', items: [
+    { title: 'CASA', desc: 'Computers are Social Actors. We apply human social rules to tech automatically.' },
+    { title: 'Anthropomorphism', desc: 'We project intent and personality onto systems that show "competence" or "care".' },
+    { title: 'Cognitive Fluency', desc: 'Natural language and "human-like" responses bypass our logical skepticism.' },
+    { title: 'Neurobiology', desc: 'Our brains process digital social cues using the same pathways as human interaction.' }
+  ]},
+  { id: 28, type: 'framework', title: 'THE MICROMOMENTS OF TRUST', subtitle: 'Building Confidence Across the User Journey', items: [
+    { label: 'Upfront', desc: 'Make it clear what the system can do and how it can do it.' },
+    { label: 'During', desc: 'Explaining decisions and offering appropriate context.' },
+    { label: 'Overtime', desc: 'Learn from behavior and provide global controls for the user.' }
+  ]},
+  { id: 29, type: 'analysis', title: 'Why We Reject Superior Help', subtitle: 'Algorithm Aversion', items: [
     { label: 'The Conflict', desc: 'Doctors paired with AI often perform worse than AI alone.' },
     { label: 'The Breakdown', desc: 'We lose confidence in algorithms faster than humans after a single error.' },
     { label: 'The Fix', desc: 'Trust Calibration: Designing for appropriate levels of reliance.' }
   ]},
-  { id: 28, type: 'workshop', title: 'Trust Design Sprint', case: 'AI Robo Advisor', situation: <>An AI-powered “robo-advisor” analyzes the market and gives users investment recommendations. Consider two different users:<br /><br /><b>User A (The Skeptic):</b> An experienced investor who ignores the AI’s data-driven advice to sell a declining stock, trusting their “gut feeling.” (Algorithm Aversion).<br /><br /><b>User B (The Believer):</b> A novice investor who accepts the AI’s advice to put their life savings into a high-risk fund without a second thought (Over-reliance).</>, task: 'Design a "Calibration" Intervention: Propose one transparent, agency-respecting AI feature for both users (e.g., An "Explain the Risk" button showing the recommendation, confidence, data, and a critical prompt).', questions: ['Diagnose Psychological Risk: State each user\'s main psychological risk in one sentence.', 'Calibration & Outcome: How does the feature help the skeptic accept data while encouraging the believer to think critically?'] },
-  { id: 29, type: 'sprint-header', sprint: '04', title: 'Culture', subtitle: 'Accounting for Global Context' },
-  { id: 30, type: 'comparison', title: 'The Stories We Tell', subtitle: 'Cultural Narratives of AI', items: [
+  { id: 30, type: 'workshop', title: 'Trust Design Sprint', case: 'AI Robo Advisor', situation: <>An AI-powered “robo-advisor” analyzes the market and gives users investment recommendations. Consider two different users:<br /><br /><b>User A (The Skeptic):</b> An experienced investor who ignores the AI’s data-driven advice to sell a declining stock, trusting their “gut feeling.” (Algorithm Aversion).<br /><br /><b>User B (The Believer):</b> A novice investor who accepts the AI’s advice to put their life savings into a high-risk fund without a second thought (Over-reliance).</>, task: 'Design a "Calibration" Intervention: Propose one transparent, agency-respecting AI feature for both users (e.g., An "Explain the Risk" button showing the recommendation, confidence, data, and a critical prompt).', questions: ['Diagnose Psychological Risk: State each user\'s main psychological risk in one sentence.', 'Calibration & Outcome: How does the feature help the skeptic accept data while encouraging the believer to think critically?'] },
+  { id: 31, type: 'sprint-header', sprint: '04', title: 'Culture', subtitle: 'Accounting for Global Context' },
+  { id: 32, type: 'comparison', title: 'The Stories We Tell', subtitle: 'Cultural Narratives of AI', items: [
     { label: 'The West (Terminator)', desc: 'AI is an apocalyptic threat. A "cold, Germanic cyborg" to be feared.' },
     { label: 'The East (Transformers)', desc: 'AI is a helper, a protector, a soulful companion (Animism).' }
   ]},
-  { id: 31, type: 'framework', title: 'Who Are You Building For?', subtitle: 'Is AI WEIRD?', items: [
+  { id: 33, type: 'framework', title: 'Who Are You Building For?', subtitle: 'Is AI WEIRD?', items: [
     { label: '88% Non-WEIRD', desc: 'The vast majority of data comes from Western, Educated, Industrialized, Rich contexts.' },
     { label: 'Value Bias', desc: 'LLMs exhibit values resembling "English-speaking Protestant Europe".' },
     { label: 'Cultural Fit', desc: 'Safety gaps: AI trained on Western norms fails in local contexts.' }
   ]},
-  { id: 32, type: 'comparison', title: 'When Silence Speaks', subtitle: 'Edward Hall Framework', items: [
+  { id: 34, type: 'comparison', title: 'When Silence Speaks', subtitle: 'Edward Hall Framework', items: [
     { label: 'Low Context (US/Germany)', desc: 'Meaning is explicit. "Say what you mean."' },
     { label: 'High Context (Japan/LatAm)', desc: 'Meaning is implicit. Tone, gesture, and silence carry the weight.' }
   ]},
-  { id: 33, type: 'table', title: 'Global Excitement Split', subtitle: 'Ipsos AI Monitor, 2025: "Products and services using AI make me excited"', rows: [
+  { id: 35, type: 'table', title: 'Global Excitement Split', subtitle: 'Ipsos AI Monitor, 2025: "Products and services using AI make me excited"', rows: [
     { country: 'Indonesia', agree: '80%', notSure: '4%', disagree: '16%' },
     { country: 'Thailand', agree: '79%', notSure: '7%', disagree: '14%' },
     { country: 'Malaysia', agree: '77%', notSure: '6%', disagree: '17%' },
@@ -426,8 +437,8 @@ const slides: Slide[] = [
     { country: 'Belgium', agree: '32%', notSure: '9%', disagree: '59%' },
     { country: 'Canada', agree: '31%', notSure: '11%', disagree: '58%' }
   ]},
-  { id: 34, type: 'workshop', title: 'Culture Sprint', case: 'Global Productivity App', situation: <>A California-based tech company has launched a popular AI productivity app in the United States. Its success was driven by features that gamify individual performance and track personal metrics. However, a recent launch in Japan is failing – users try it once and then quickly churn.</>, task: <><b>The Challenge:</b> Use cultural frameworks (Hofstede/Hall) to diagnose the failure and redesign the experience for the Japanese market.</>, questions: ['Hypothesis: Why is the US success failing in Japan? (Consider collectivism vs. individualism).', 'Stakeholders: Identify 3 Japanese groups needed to test this (e.g. evaluating managers vs. tenured employees).', 'Killer Question: What single strategic question must your research answer to guide a redesign?'] },
-  { id: 35, type: 'title', title: 'THANK YOU', subtitle: 'Continue the Conversation', tag: 'WWW.SMARTERTOGETHERAI.COM' }
+  { id: 36, type: 'workshop', title: 'Culture Sprint', case: 'Global Productivity App', situation: <>A California-based tech company has launched a popular AI productivity app in the United States. Its success was driven by features that gamify individual performance and track personal metrics. However, a recent launch in Japan is failing – users try it once and then quickly churn.</>, task: <><b>The Challenge:</b> Use cultural frameworks (Hofstede/Hall) to diagnose the failure and redesign the experience for the Japanese market.</>, questions: ['Hypothesis: Why is the US success failing in Japan? (Consider collectivism vs. individualism).', 'Stakeholders: Identify 3 Japanese groups needed to test this (e.g. evaluating managers vs. tenured employees).', 'Killer Question: What single strategic question must your research answer to guide a redesign?'] },
+  { id: 37, type: 'title', title: 'THANK YOU', subtitle: 'Continue the Conversation', tag: 'WWW.SMARTERTOGETHERAI.COM' }
 ]
 
 export default function App() {
@@ -810,7 +821,7 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              <div style={{ ...styles.grid, gridTemplateColumns: slide.id === 27 ? 'repeat(3, 1fr)' : 'repeat(auto-fit, minmax(450px, 1fr))' } as any}>
+              <div style={{ ...styles.grid, gridTemplateColumns: (slide.id === 27 || slide.id === 28 || slide.id === 29) ? 'repeat(3, 1fr)' : 'repeat(auto-fit, minmax(450px, 1fr))' } as any}>
                 {slide.items?.map((item: any) => (
                   <div key={item.label} style={{ ...styles.card, display: 'flex', gap: '30px', minWidth: 0 } as any}>
                     <div style={{ fontWeight: '900', color: brandPrimary, fontSize: '18px' }}>+</div>
